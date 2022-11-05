@@ -13,6 +13,7 @@ const ShowsContent = () => {
       subTitle={"Tôi chơi chúng, Nhạc!"}
       titleColor="text-secondary"
       bgColor={"bg-primary"}
+      id={"shows"}
     >
       <div className="grid-row grid gap-x-3 lg:grid-cols-4">
         {shows?.map((show) => (

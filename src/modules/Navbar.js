@@ -17,17 +17,20 @@ const Navbar = () => {
           src={Logo}
           alt="logo"
           className="h-[50px] w-[50px] cursor-pointer rounded-full"
+          onClick={() => {
+            window.scroll(0, 0);
+          }}
         />
-        <a href="#abc" className="navItem">
+        <a href="#band" className="navItem">
           Giới Thiệu
         </a>
-        <a href="#abc" className="navItem">
+        <a href="#shows" className="navItem">
           Shows
         </a>
-        <a href="#abc" className="navItem">
+        <a href="#albums" className="navItem">
           Albums
         </a>
-        <a href="#abc" className="navItem">
+        <a href="#contact" className="navItem">
           Liên Hệ
         </a>
       </div>

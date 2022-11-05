@@ -14,6 +14,7 @@ const AlbumsContent = () => {
       titleColor={"text-primary"}
       subTitle={"Nhạc chơi chúng tôi!"}
       bgColor={"bg-secondary"}
+      id={"albums"}
     >
       <div className="flex flex-col gap-y-10">
         {albums.map((album) => (

@@ -6,10 +6,11 @@ const ContentWraper = ({
   titleColor,
   children,
   bgColor,
+  id,
   ...props
 }) => {
   return (
-    <div className={`w-full ${bgColor}`}>
+    <div className={`w-full ${bgColor}`} id={id}>
       <div className={`mx-auto py-[100px] px-3 lg:w-[1250px] ${titleColor}`}>
         <h1 className="mb-[38px] text-center text-5xl font-medium tracking-wider">
           {title}

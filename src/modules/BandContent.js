@@ -13,6 +13,7 @@ const BandContent = () => {
       subTitle={"Nhạc chúng tôi chơi!"}
       titleColor={"text-primary"}
       bgColor={"bg-secondary"}
+      id={"band"}
     >
       <p className="mb-[38px] text-justify indent-8 text-xl leading-8">
         {description}

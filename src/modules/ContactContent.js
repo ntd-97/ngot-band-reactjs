@@ -18,6 +18,7 @@ const ContactContent = () => {
       titleColor={"text-secondary"}
       subTitle={"Ngọt!"}
       bgColor={"bg-primary"}
+      id={"contact"}
     >
       <div className="mt-20 flex justify-between">
         <div className="flex flex-col gap-y-4 text-xl">
