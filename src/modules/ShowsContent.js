@@ -19,6 +19,7 @@ const ShowsContent = () => {
         {shows?.map((show) => (
           <ShowItem
             key={show._id}
+            showId={show._id}
             title={show.title}
             imgUrl={show.poster}
             date={show.date}

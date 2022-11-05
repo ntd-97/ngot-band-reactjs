@@ -15,11 +15,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCommonInfo } from "./redux/slices/commonInfoSlice";
 
 export const TicketSidebarContext = createContext();
-export const TicketBookingContext = createContext();
 
 function App() {
   const [openTicketSidebar, setOpenTicketSidebar] = useState(false);
-  const [openTicketBooking, setOpenTicketBooking] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -49,13 +47,7 @@ function App() {
         <>
           <BannerImage />
           <BandContent />
-
-          <TicketBookingContext.Provider
-            value={{ openTicketBooking, setOpenTicketBooking }}
-          >
-            <ShowsContent />
-          </TicketBookingContext.Provider>
-
+          <ShowsContent />
           <AlbumsContent />
           <ContactContent />
           <Footer />
@@ -66,11 +58,7 @@ function App() {
             <TicketSidebar />
           </TicketSidebarContext.Provider>
 
-          <TicketBookingContext.Provider
-            value={{ openTicketBooking, setOpenTicketBooking }}
-          >
-            <TicketBooking />
-          </TicketBookingContext.Provider>
+          <TicketBooking />
         </>
       )}
     </div>

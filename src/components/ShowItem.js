@@ -1,11 +1,24 @@
-import React, { useContext } from "react";
-
-import { TicketBookingContext } from "../App";
+import React from "react";
 
 import CustomButton from "./CustomButton";
 
-const ShowItem = ({ imgUrl, title, date, location, description, amount }) => {
-  const { setOpenTicketBooking } = useContext(TicketBookingContext);
+import { useDispatch } from "react-redux";
+import {
+  setOpenTicketBooking,
+  setShowId,
+} from "../redux/slices/ticketBookingSlice";
+
+const ShowItem = ({
+  imgUrl,
+  title,
+  date,
+  location,
+  description,
+  amount,
+  showId,
+}) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="relative flex flex-col justify-between transition-all hover:scale-95 hover:cursor-pointer">
       <img src={imgUrl} alt="poster" className="w-full rounded-t-xl" />
@@ -21,7 +34,8 @@ const ShowItem = ({ imgUrl, title, date, location, description, amount }) => {
         <CustomButton
           className="rounded-lg bg-primary py-[10px] text-secondary"
           onClickHandler={() => {
-            setOpenTicketBooking(true);
+            dispatch(setShowId({ showId: showId }));
+            dispatch(setOpenTicketBooking({ openTicketBooking: true }));
           }}
         >
           Mua vé
