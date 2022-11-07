@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setOpenTicketBooking } from "../redux/slices/ticketBookingSlice";
@@ -12,39 +12,56 @@ import TicketTypeItem from "../components/TicketTypeItem";
 import Loader from "../components/Loader";
 
 const TicketBooking = () => {
-  const ticketBooking = useRef();
+  // tickit type state
+  const [ticketTypeChecked, setTicketTypeChecked] = useState({
+    id: "",
+    price: 0,
+  });
 
+  // amount state
+  const [amount, setAmmount] = useState(1);
+  const amountChangeHandler = (event) => {
+    setAmmount(event.target.value);
+  };
+
+  // get showId and openTicketBooking from store
   const dispatch = useDispatch();
   const { showId, openTicketBooking } = useSelector(
     (state) => state.ticketBooking
   );
+  const closeTicketBooking = () => {
+    dispatch(setOpenTicketBooking(false));
+  };
+
+  // get show details from store
   const { showDetails, loading } = useSelector((state) => state.showDetails);
+
+  // get login info from store
+  const { loginInfo } = useSelector((state) => state.login);
 
   useEffect(() => {
     if (showId) {
       dispatch(getShowDetails({ showId: showId }));
+      setAmmount(1);
+      setTicketTypeChecked({
+        id: "",
+        price: 0,
+      });
     }
   }, [dispatch, showId]);
 
   return (
     <Portal
       visible={openTicketBooking}
-      onClose={() => {
-        dispatch(setOpenTicketBooking({ openTicketBooking: false }));
-      }}
+      onClose={closeTicketBooking}
       containerClassName="fixed z-[9999] inset-0 flex items-center justify-center"
     >
       {loading ? (
         <Loader cssClass="h-12 w-12 border-4 mt-[150px]" loading={loading} />
       ) : (
-        <div
-          ref={ticketBooking}
-          className="no-scrollbar relative max-h-[90vh] w-[60%] overflow-scroll rounded-xl bg-secondary p-5 text-primary"
-        >
+        <div className="no-scrollbar relative max-h-[90vh] w-[60%] overflow-scroll rounded-xl bg-secondary p-5 text-primary">
           <RiCloseCircleLine
-            onClick={() => {
-              dispatch(setOpenTicketBooking({ openTicketBooking: false }));
-            }}
+            onClick={closeTicketBooking}
             className="absolute right-3 top-3 z-50 text-3xl transition-all hover:scale-110 hover:cursor-pointer"
           />
           <div className="relative flex gap-x-3 border-b-4 border-dashed pb-5">
@@ -64,8 +81,8 @@ const TicketBooking = () => {
                 {showDetails.ticketTypes?.map((ticketType) => (
                   <TicketTypeItem
                     key={ticketType._id}
-                    ticketTypeId={ticketType._id}
                     ticketTypeInfo={ticketType}
+                    setTicketTypeChecked={setTicketTypeChecked}
                   />
                 ))}
               </div>
@@ -93,6 +110,8 @@ const TicketBooking = () => {
                     name="fullName"
                     id="fullName"
                     placeholder="Tên"
+                    disabled={loginInfo?._id}
+                    value={loginInfo.fullName}
                   />
                 </div>
                 <div className="flex w-full flex-col">
@@ -105,6 +124,8 @@ const TicketBooking = () => {
                     name="email"
                     id="email"
                     placeholder="Email"
+                    disabled={loginInfo?._id}
+                    value={loginInfo.email}
                   />
                 </div>
                 <div className="flex w-full flex-col">
@@ -117,20 +138,24 @@ const TicketBooking = () => {
                     name="phone"
                     id="phone"
                     placeholder="Số điện thoại"
+                    disabled={loginInfo?._id}
+                    value={loginInfo.phone}
                   />
                 </div>
-                <div className="flex w-full flex-col">
-                  <label className="mb-1 font-medium" htmlFor="password">
-                    Password:
-                  </label>
-                  <input
-                    className="rounded-lg border-2 border-primary p-2"
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="Password"
-                  />
-                </div>
+                {!loginInfo?._id && (
+                  <div className="flex w-full flex-col">
+                    <label className="mb-1 font-medium" htmlFor="password">
+                      Password:
+                    </label>
+                    <input
+                      className="rounded-lg border-2 border-primary p-2"
+                      type="password"
+                      name="password"
+                      id="password"
+                      placeholder="Password"
+                    />
+                  </div>
+                )}
                 <div className="flex w-full flex-col">
                   <label className="mb-1 font-medium" htmlFor="amount">
                     Số lượng vé:
@@ -143,12 +168,18 @@ const TicketBooking = () => {
                     placeholder="0"
                     min={1}
                     max={3}
+                    onKeyDown={(event) => event.preventDefault()}
+                    onChange={amountChangeHandler}
+                    value={amount}
                   />
                 </div>
                 <div className="flex w-full flex-col">
                   <p className="mb-1 font-medium">Tổng tiền:</p>
                   <p className="rounded-lg border-2 border-contrast p-2 text-right font-bold">
-                    1.200.000đ
+                    {new Intl.NumberFormat("vi-VN").format(
+                      ticketTypeChecked.price * amount
+                    )}
+                    đ
                   </p>
                 </div>
               </div>

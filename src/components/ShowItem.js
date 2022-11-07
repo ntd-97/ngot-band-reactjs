@@ -35,7 +35,7 @@ const ShowItem = ({
           className="rounded-lg bg-primary py-[10px] text-secondary"
           onClickHandler={() => {
             dispatch(setShowId({ showId: showId }));
-            dispatch(setOpenTicketBooking({ openTicketBooking: true }));
+            dispatch(setOpenTicketBooking(true));
           }}
         >
           Mua vé

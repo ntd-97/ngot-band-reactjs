@@ -1,6 +1,6 @@
 import React from "react";
 
-const TicketTypeItem = ({ ticketTypeInfo }) => {
+const TicketTypeItem = ({ ticketTypeInfo, setTicketTypeChecked }) => {
   return (
     <div className="flex flex-col rounded-lg border-2 border-primary p-2">
       <div className="flex items-center justify-between border-b-2 pb-2">
@@ -12,6 +12,13 @@ const TicketTypeItem = ({ ticketTypeInfo }) => {
           id="ticketType"
           name="ticketType"
           className="h-4 w-4 accent-contrast"
+          // value={ticketTypeInfo._id}
+          onChange={(event) => {
+            setTicketTypeChecked({
+              id: ticketTypeInfo._id,
+              price: ticketTypeInfo.price,
+            });
+          }}
         />
       </div>
       <p className="py-2">{ticketTypeInfo.description}</p>

@@ -1,10 +1,17 @@
 import React, { useContext, useRef } from "react";
+
 import { HiArrowNarrowRight } from "react-icons/hi";
 
 import { TicketSidebarContext } from "../App";
+
 import TicketItem from "../components/TicketItem";
+import CustomButton from "../components/CustomButton";
 
 import useClickOutside from "../hooks/useClickOutside";
+
+import avatar from "../assets/images/avatar.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoginInfo } from "../redux/slices/loginSlice";
 
 const TicketSidebar = () => {
   const { openTicketSidebar, setOpenTicketSidebar } =
@@ -13,6 +20,15 @@ const TicketSidebar = () => {
   const ticketSidebar = useRef();
 
   useClickOutside(ticketSidebar, setOpenTicketSidebar);
+
+  const { loginInfo } = useSelector((state) => state.login);
+  const dispatch = useDispatch();
+
+  const logOutHandler = () => {
+    dispatch(setLoginInfo({}));
+    setOpenTicketSidebar(false);
+    localStorage.clear();
+  };
 
   return (
     <div
@@ -30,13 +46,14 @@ const TicketSidebar = () => {
       >
         <div className={`flex h-[73px] items-center text-secondary`}>
           <HiArrowNarrowRight
-            className="hover:text-contrast text-3xl transition-all hover:cursor-pointer"
+            className="text-3xl transition-all hover:cursor-pointer hover:text-contrast"
             onClick={() => {
               setOpenTicketSidebar(!openTicketSidebar);
             }}
           />
           <h1 className="flex-1 text-center text-2xl font-medium">Tickets</h1>
         </div>
+
         <div className="no-scrollbar flex flex-1 flex-col gap-y-3 overflow-scroll">
           <TicketItem
             imgUrl={
@@ -123,6 +140,22 @@ const TicketSidebar = () => {
             }}
             phone={"0909055734"}
           />
+        </div>
+        <div className="flex items-center justify-between pt-3 text-secondary">
+          <div className="flex items-center gap-x-2">
+            <img
+              src={avatar}
+              alt="avatar img"
+              className="h-10 w-10 rounded-full"
+            />
+            <p className="text-lg">{loginInfo?.fullName}</p>
+          </div>
+          <CustomButton
+            className={"rounded-lg bg-contrast px-2 py-1 text-lg"}
+            onClickHandler={logOutHandler}
+          >
+            Đăng xuất
+          </CustomButton>
         </div>
       </div>
     </div>

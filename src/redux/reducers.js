@@ -2,12 +2,14 @@ import { combineReducers } from "@reduxjs/toolkit";
 
 import commonInfoReducer from "./slices/commonInfoSlice";
 import showDetailsReducer from "./slices/showDetailsSlice";
-import TicketBookingReducer from "./slices/ticketBookingSlice";
+import ticketBookingReducer from "./slices/ticketBookingSlice";
+import loginReducer from "./slices/loginSlice";
 
 const reducer = combineReducers({
   commonInfo: commonInfoReducer,
-  ticketBooking: TicketBookingReducer,
+  ticketBooking: ticketBookingReducer,
   showDetails: showDetailsReducer,
+  login: loginReducer,
 });
 
 export default reducer;

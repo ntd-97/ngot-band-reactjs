@@ -15,7 +15,7 @@ const ticketBookingSlice = createSlice({
     }),
     setOpenTicketBooking: (state, action) => ({
       ...state,
-      openTicketBooking: action.payload.openTicketBooking,
+      openTicketBooking: action.payload,
     }),
   },
 });

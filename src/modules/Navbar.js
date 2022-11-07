@@ -6,9 +6,18 @@ import { HiOutlineTicket } from "react-icons/hi";
 
 import { TicketSidebarContext } from "../App";
 
+import CustomButton from "../components/CustomButton";
+
+import { useDispatch, useSelector } from "react-redux";
+import { setOpenLoginForm } from "../redux/slices/loginSlice";
+
 const Navbar = () => {
   const { openTicketSidebar, setOpenTicketSidebar } =
     useContext(TicketSidebarContext);
+
+  const dispatch = useDispatch();
+
+  const { loginInfo } = useSelector((state) => state.login);
 
   return (
     <div className="Navbar fixed top-0 z-50 flex h-[73px] w-full items-center justify-between bg-primary pl-16 pr-20">
@@ -34,16 +43,31 @@ const Navbar = () => {
           Liên Hệ
         </a>
       </div>
-      <div className="relative text-secondary">
-        <HiOutlineTicket
-          className="cursor-pointer text-4xl transition-all lg:hover:scale-110"
-          onClick={() => {
-            setOpenTicketSidebar(!openTicketSidebar);
-          }}
-        />
-        <span className="absolute -right-5 -top-3 rounded-full bg-red-600 py-[2px] px-[7px] font-medium">
-          12
-        </span>
+      <div className="flex gap-x-2 text-secondary">
+        {!loginInfo?._id && (
+          <CustomButton
+            className="rounded-lg bg-contrast px-2 py-1 text-lg"
+            onClickHandler={() => {
+              dispatch(setOpenLoginForm(true));
+            }}
+          >
+            Đăng nhập
+          </CustomButton>
+        )}
+
+        {loginInfo?._id && (
+          <div className="relative">
+            <HiOutlineTicket
+              className="cursor-pointer text-4xl transition-all lg:hover:scale-110"
+              onClick={() => {
+                setOpenTicketSidebar(!openTicketSidebar);
+              }}
+            />
+            <span className="absolute -right-4 -top-3 rounded-full bg-contrast py-[2px] px-[7px] font-medium">
+              12
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

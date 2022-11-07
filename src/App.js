@@ -9,10 +9,12 @@ import Navbar from "./modules/Navbar";
 import ShowsContent from "./modules/ShowsContent";
 import TicketBooking from "./modules/TicketBooking";
 import TicketSidebar from "./modules/TicketSidebar";
+import SignIn from "./modules/SignIn";
 import Loader from "./components/Loader";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getCommonInfo } from "./redux/slices/commonInfoSlice";
+import { setLoginInfo } from "./redux/slices/loginSlice";
 
 export const TicketSidebarContext = createContext();
 
@@ -26,6 +28,15 @@ function App() {
   useEffect(() => {
     // get common info
     dispatch(getCommonInfo());
+
+    //set login info when reload
+    const id = localStorage.getItem("_id");
+    const fullName = localStorage.getItem("fullName");
+    const phone = localStorage.getItem("phone");
+    const email = localStorage.getItem("email");
+    dispatch(
+      setLoginInfo({ _id: id, fullName: fullName, phone: phone, email: email })
+    );
 
     // nav to error page
     // if (movies.error) {
@@ -59,6 +70,7 @@ function App() {
           </TicketSidebarContext.Provider>
 
           <TicketBooking />
+          <SignIn />
         </>
       )}
     </div>
