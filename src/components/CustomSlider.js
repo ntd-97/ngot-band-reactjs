@@ -24,7 +24,6 @@ const CustomSlider = ({
       <Swiper
         modules={[Autoplay, Pagination, Navigation, Lazy]}
         className={`mySwiper${specifyClass}`}
-        spaceBetween={12}
         //add swiper custom navigation
         navigation={{
           prevEl: `.btnPrev-${specifyClass}`,
