@@ -30,8 +30,14 @@ const TicketBooking = () => {
   const { showId, openTicketBooking } = useSelector(
     (state) => state.ticketBooking
   );
+
+  // get add ticket loading from store
+  const { loading: ticketLoading } = useSelector((state) => state.ticket);
+
   const closeTicketBooking = () => {
-    dispatch(setOpenTicketBooking(false));
+    if (!ticketLoading) {
+      dispatch(setOpenTicketBooking(false));
+    }
   };
 
   // get show details from store
@@ -95,7 +101,6 @@ const TicketBooking = () => {
             amountChangeHandler={amountChangeHandler}
             amount={amount}
             showId={showId}
-            setOpenTicketBooking={setOpenTicketBooking}
           />
         </div>
       )}

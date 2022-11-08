@@ -44,7 +44,7 @@ const TicketBookingForm = ({
   // get error message from store
   const { errorMsg } = useSelector((state) => state.signUp);
 
-  // get error message from store
+  // get add ticket loading from store
   const { loading } = useSelector((state) => state.ticket);
 
   // config react-hook-form
@@ -145,6 +145,11 @@ const TicketBookingForm = ({
                 {errors.email?.message}
               </p>
             )}
+            {!errors?.email && errorMsg && (
+              <p className="absolute -bottom-7 right-0 text-base font-medium text-contrast">
+                {errorMsg}
+              </p>
+            )}
           </div>
           <div className="relative flex w-full flex-col">
             <label className="mb-1 font-medium" htmlFor="phone">
@@ -219,16 +224,10 @@ const TicketBookingForm = ({
           </div>
         </div>
 
-        {errorMsg && (
-          <p className="mt-3 w-full text-left text-base font-medium text-contrast">
-            {errorMsg}
-          </p>
-        )}
-
         <CustomButton
           type="submit"
-          className={"mt-3 w-full rounded-lg bg-primary p-3 text-secondary"}
-          aria-disabled={loading ? true : false}
+          className={"mt-5 w-full rounded-lg bg-primary p-3 text-secondary"}
+          disabled={loading}
         >
           {loading ? (
             <div className="mx-auto h-7 w-7 animate-spin rounded-full border-2 border-t-2 border-white border-t-transparent"></div>

@@ -11,6 +11,7 @@ import TicketBooking from "./modules/TicketBooking";
 import TicketSidebar from "./modules/TicketSidebar";
 import SignIn from "./modules/SignIn";
 import Loader from "./components/Loader";
+import SignUp from "./modules/SignUp";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getCommonInfo } from "./redux/slices/commonInfoSlice";
@@ -34,14 +35,10 @@ function App() {
     const fullName = localStorage.getItem("fullName");
     const phone = localStorage.getItem("phone");
     const email = localStorage.getItem("email");
+
     dispatch(
       setLoginInfo({ _id: id, fullName: fullName, phone: phone, email: email })
     );
-
-    // nav to error page
-    // if (movies.error) {
-    //   navigate("/error");
-    // }
   }, [dispatch, error]);
 
   return (
@@ -71,6 +68,7 @@ function App() {
 
           <TicketBooking />
           <SignIn />
+          <SignUp />
         </>
       )}
     </div>

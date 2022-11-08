@@ -10,6 +10,7 @@ import CustomButton from "../components/CustomButton";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setOpenLoginForm } from "../redux/slices/loginSlice";
+import { setOpenSignUpForm } from "../redux/slices/signUpSlice";
 
 const Navbar = () => {
   const { openTicketSidebar, setOpenTicketSidebar } =
@@ -46,14 +47,25 @@ const Navbar = () => {
       </div>
       <div className="flex gap-x-2 text-secondary">
         {!loginInfo?._id && (
-          <CustomButton
-            className="rounded-lg bg-contrast px-2 py-1 text-lg"
-            onClickHandler={() => {
-              dispatch(setOpenLoginForm(true));
-            }}
-          >
-            Đăng nhập
-          </CustomButton>
+          <>
+            <CustomButton
+              className="rounded-lg border-2 border-secondary px-2 py-1 text-lg hover:border-contrast"
+              onClickHandler={() => {
+                dispatch(setOpenLoginForm(true));
+              }}
+            >
+              Đăng nhập
+            </CustomButton>
+
+            <CustomButton
+              className="rounded-lg bg-contrast px-3 py-1 text-lg"
+              onClickHandler={() => {
+                dispatch(setOpenSignUpForm(true));
+              }}
+            >
+              Đăng ký
+            </CustomButton>
+          </>
         )}
 
         {loginInfo?._id && (

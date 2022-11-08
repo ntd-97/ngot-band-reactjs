@@ -8,13 +8,15 @@ import {
   setErrorMsg,
 } from "../../slices/signUpSlice";
 
-import { getLoginInfo } from "../../slices/loginSlice";
+import { getLoginInfo, setLoginLoading } from "../../slices/loginSlice";
 
 import { getTicketAdded, setTicketLoading } from "../../slices/ticketSlice";
 
 function* handleSignUpAccount({ payload }) {
   try {
     yield put(setLoading(true));
+    // set loading of login slice
+    yield put(setLoginLoading(true));
     // set loading of ticket slice
     if (payload.signUpAndAddTicket) {
       yield put(setTicketLoading(true));
@@ -49,12 +51,14 @@ function* handleSignUpAccount({ payload }) {
           })
         );
       }
+
       yield put(setLoading(false));
     }
   } catch (error) {
     console.log(error);
     yield put(setLoading(false));
     yield put(setTicketLoading(false));
+    yield put(setLoginLoading(false));
     yield put(setError(true));
 
     // set error message

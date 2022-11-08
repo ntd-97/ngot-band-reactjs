@@ -10,7 +10,7 @@ const CustomButton = ({
   return (
     <button
       type={type}
-      className={`${className} transition-all hover:bg-opacity-[85%]`}
+      className={`${className} transition-all hover:bg-opacity-[85%] disabled:bg-opacity-[60%]`}
       onClick={onClickHandler}
       {...props}
     >

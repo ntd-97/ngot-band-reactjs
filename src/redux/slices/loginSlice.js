@@ -22,7 +22,7 @@ const loginSlice = createSlice({
       openLoginForm: action.payload,
     }),
     setError: (state, action) => ({ ...state, error: action.payload }),
-    setLoading: (state, action) => ({ ...state, loading: action.payload }),
+    setLoginLoading: (state, action) => ({ ...state, loading: action.payload }),
     setErrorMsg: (state, action) => ({ ...state, errorMsg: action.payload }),
   },
 });
@@ -32,7 +32,7 @@ export const {
   setLoginInfo,
   getLoginInfo,
   setError,
-  setLoading,
+  setLoginLoading,
   setErrorMsg,
 } = loginSlice.actions;
 export default loginSlice.reducer;

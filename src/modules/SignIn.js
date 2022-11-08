@@ -35,7 +35,7 @@ const SignIn = () => {
   // show password
   const [showPassword, setShowPassword] = useState(false);
 
-  const { openLoginForm, errorMsg, loading } = useSelector(
+  const { openLoginForm, errorMsg, loading, loginInfo } = useSelector(
     (state) => state.login
   );
   const dispatch = useDispatch();
@@ -59,21 +59,23 @@ const SignIn = () => {
 
   // close form handler
   const closeFormHandler = () => {
-    // reset error message
-    dispatch(setErrorMsg(""));
-    // reset checkbox show password
-    setShowPassword(false);
-    // reset form
-    reset({
-      email: "",
-      password: "",
-    });
-    // close modal
-    dispatch(setOpenLoginForm(false));
+    if (!loading) {
+      // reset error message
+      dispatch(setErrorMsg(""));
+      // reset checkbox show password
+      setShowPassword(false);
+      // reset form
+      reset({
+        email: "",
+        password: "",
+      });
+      // close modal
+      dispatch(setOpenLoginForm(false));
+    }
   };
 
   useEffect(() => {
-    if (!loading) {
+    if (loginInfo._id) {
       // reset checkbox show password
       setShowPassword(false);
       // reset form
@@ -82,7 +84,7 @@ const SignIn = () => {
         password: "",
       });
     }
-  }, [loading, reset]);
+  }, [loginInfo._id, reset]);
 
   return (
     <Portal
@@ -168,7 +170,7 @@ const SignIn = () => {
         <CustomButton
           type="submit"
           className="mt-3 mb-2 flex w-full items-center justify-center rounded-lg bg-primary py-3 px-2 text-center text-secondary"
-          aria-disabled={loading ? true : false}
+          disabled={loading}
         >
           {loading ? (
             <div className="mx-auto h-7 w-7 animate-spin rounded-full border-2 border-t-2 border-white border-t-transparent"></div>
