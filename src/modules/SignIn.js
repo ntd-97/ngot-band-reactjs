@@ -22,10 +22,13 @@ import { useEffect } from "react";
 const validationSchema = yup.object({
   email: yup
     .string()
-    .max(255)
-    .email("Please enter valid Email!")
-    .required("Please enter your Email!"),
-  password: yup.string().max(20).required("Please enter your Password!"),
+    .max(255, "Email không dài quá 255 ký tự")
+    .email("Vui lòng nhập email hợp lệ!")
+    .required("Vui lòng nhập email!"),
+  password: yup
+    .string()
+    .max(20, "Password không dài quá 20 ký tự!")
+    .required("Vui lòng nhập password!"),
 });
 
 const SignIn = () => {
@@ -42,7 +45,6 @@ const SignIn = () => {
     register,
     handleSubmit,
     formState: { errors, isValid },
-    // setFocus,
     reset,
     getValues,
   } = useForm({ resolver: yupResolver(validationSchema), mode: "onChange" });
@@ -169,7 +171,7 @@ const SignIn = () => {
           aria-disabled={loading ? true : false}
         >
           {loading ? (
-            <div className="mx-auto h-5 w-5 animate-spin rounded-full border-2 border-t-2 border-white border-t-transparent"></div>
+            <div className="mx-auto h-7 w-7 animate-spin rounded-full border-2 border-t-2 border-white border-t-transparent"></div>
           ) : (
             <>
               <RiLoginBoxLine className="mr-1 inline-block text-xl" />

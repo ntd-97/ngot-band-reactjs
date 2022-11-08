@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setOpenTicketBooking } from "../redux/slices/ticketBookingSlice";
 import { getShowDetails } from "../redux/slices/showDetailsSlice";
+import { setErrorMsg } from "../redux/slices/signUpSlice";
 
 import { RiCloseCircleLine } from "react-icons/ri";
 
-import CustomButton from "../components/CustomButton";
 import Portal from "../components/Portal";
 import TicketTypeItem from "../components/TicketTypeItem";
 import Loader from "../components/Loader";
+import TicketBookingForm from "../components/TicketBookingForm";
 
 const TicketBooking = () => {
   // tickit type state
@@ -36,19 +37,18 @@ const TicketBooking = () => {
   // get show details from store
   const { showDetails, loading } = useSelector((state) => state.showDetails);
 
-  // get login info from store
-  const { loginInfo } = useSelector((state) => state.login);
-
   useEffect(() => {
     if (showId) {
       dispatch(getShowDetails({ showId: showId }));
-      setAmmount(1);
-      setTicketTypeChecked({
-        id: "",
-        price: 0,
-      });
     }
-  }, [dispatch, showId]);
+
+    dispatch(setErrorMsg(""));
+    setAmmount(1);
+    setTicketTypeChecked({
+      id: "",
+      price: 0,
+    });
+  }, [dispatch, showId, openTicketBooking]);
 
   return (
     <Portal
@@ -90,108 +90,13 @@ const TicketBooking = () => {
             <div className="absolute bottom-0 h-4 w-8 -translate-x-[28px] translate-y-1/2 rotate-90 rounded-tl-[32px] rounded-tr-[32px] bg-primary"></div>
             <div className="absolute bottom-0 right-0 h-4 w-8 translate-x-[28px] translate-y-1/2 -rotate-90 rounded-tl-[32px] rounded-tr-[32px] bg-primary"></div>
           </div>
-          <div className="flex flex-col">
-            <h2 className="mt-6 mb-2 text-center text-3xl font-bold">
-              Thông tin vé
-            </h2>
-
-            <form
-              action=""
-              className="mt-3 flex flex-col items-center justify-center gap-x-3 text-lg"
-            >
-              <div className="grid w-full grid-cols-2 justify-between gap-y-2 gap-x-3">
-                <div className="flex w-full flex-col">
-                  <label className="mb-1 font-medium" htmlFor="fullName">
-                    Họ và tên:
-                  </label>
-                  <input
-                    className="rounded-lg border-2 border-primary p-2"
-                    type="text"
-                    name="fullName"
-                    id="fullName"
-                    placeholder="Tên"
-                    disabled={loginInfo?._id}
-                    value={loginInfo.fullName}
-                  />
-                </div>
-                <div className="flex w-full flex-col">
-                  <label className="mb-1 font-medium" htmlFor="email">
-                    Email:
-                  </label>
-                  <input
-                    className="rounded-lg border-2 border-primary p-2"
-                    type="text"
-                    name="email"
-                    id="email"
-                    placeholder="Email"
-                    disabled={loginInfo?._id}
-                    value={loginInfo.email}
-                  />
-                </div>
-                <div className="flex w-full flex-col">
-                  <label className="mb-1 font-medium" htmlFor="phone">
-                    Số điện thoại:
-                  </label>
-                  <input
-                    className="rounded-lg border-2 border-primary p-2"
-                    type="text"
-                    name="phone"
-                    id="phone"
-                    placeholder="Số điện thoại"
-                    disabled={loginInfo?._id}
-                    value={loginInfo.phone}
-                  />
-                </div>
-                {!loginInfo?._id && (
-                  <div className="flex w-full flex-col">
-                    <label className="mb-1 font-medium" htmlFor="password">
-                      Password:
-                    </label>
-                    <input
-                      className="rounded-lg border-2 border-primary p-2"
-                      type="password"
-                      name="password"
-                      id="password"
-                      placeholder="Password"
-                    />
-                  </div>
-                )}
-                <div className="flex w-full flex-col">
-                  <label className="mb-1 font-medium" htmlFor="amount">
-                    Số lượng vé:
-                  </label>
-                  <input
-                    className="rounded-lg border-2 border-primary p-2"
-                    type="number"
-                    name="amount"
-                    id="amount"
-                    placeholder="0"
-                    min={1}
-                    max={3}
-                    onKeyDown={(event) => event.preventDefault()}
-                    onChange={amountChangeHandler}
-                    value={amount}
-                  />
-                </div>
-                <div className="flex w-full flex-col">
-                  <p className="mb-1 font-medium">Tổng tiền:</p>
-                  <p className="rounded-lg border-2 border-contrast p-2 text-right font-bold">
-                    {new Intl.NumberFormat("vi-VN").format(
-                      ticketTypeChecked.price * amount
-                    )}
-                    đ
-                  </p>
-                </div>
-              </div>
-              <CustomButton
-                className={
-                  "mt-3 w-full rounded-lg bg-primary p-3 text-secondary"
-                }
-              >
-                Đặt vé
-              </CustomButton>
-            </form>
-          </div>
+          <TicketBookingForm
+            ticketTypeChecked={ticketTypeChecked}
+            amountChangeHandler={amountChangeHandler}
+            amount={amount}
+            showId={showId}
+            setOpenTicketBooking={setOpenTicketBooking}
+          />
         </div>
       )}
     </Portal>
