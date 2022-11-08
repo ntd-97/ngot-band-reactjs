@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 
 import { HiArrowNarrowRight } from "react-icons/hi";
 
@@ -12,6 +12,7 @@ import useClickOutside from "../hooks/useClickOutside";
 import avatar from "../assets/images/avatar.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginInfo } from "../redux/slices/loginSlice";
+import { getUserTickets, setUserTickets } from "../redux/slices/ticketSlice";
 
 const TicketSidebar = () => {
   const { openTicketSidebar, setOpenTicketSidebar } =
@@ -22,13 +23,21 @@ const TicketSidebar = () => {
   useClickOutside(ticketSidebar, setOpenTicketSidebar);
 
   const { loginInfo } = useSelector((state) => state.login);
+  const { userTickets } = useSelector((state) => state.ticket);
   const dispatch = useDispatch();
 
   const logOutHandler = () => {
     dispatch(setLoginInfo({}));
+    dispatch(setUserTickets([]));
     setOpenTicketSidebar(false);
     localStorage.clear();
   };
+
+  useEffect(() => {
+    if (loginInfo._id) {
+      dispatch(getUserTickets(loginInfo._id));
+    }
+  }, [loginInfo._id, dispatch]);
 
   return (
     <div
@@ -55,92 +64,27 @@ const TicketSidebar = () => {
         </div>
 
         <div className="no-scrollbar flex flex-1 flex-col gap-y-3 overflow-scroll">
-          <TicketItem
-            imgUrl={
-              "https://res.cloudinary.com/yelpcampcloudimg/image/upload/v1667231682/ngot-band/shows/313205932_735743951248315_6390225782124995825_n_nlsoo1.jpg"
-            }
-            title={"NHẠC NGỌT ĐỂ ĐỜI"}
-            location={"Nhà hát Quân đội, 140 Cộng Hòa, P.4, Q.Tân Bình, TP.HCM"}
-            date={"20:00 - 19/11/2022"}
-            userName={"Nguyễn Văn A"}
-            email={"abc@gmail.com"}
-            amount={"3"}
-            createdDate={"20:00 - 01/11/2022"}
-            ticketType={{
-              type: "VIP",
-              description: "Vị trí trước sân khấu, bao gồm nước và poster",
-            }}
-            phone={"0909055734"}
-          />
-          <TicketItem
-            imgUrl={
-              "https://res.cloudinary.com/yelpcampcloudimg/image/upload/v1667231682/ngot-band/shows/313205932_735743951248315_6390225782124995825_n_nlsoo1.jpg"
-            }
-            title={"NHẠC NGỌT ĐỂ ĐỜI"}
-            location={"Nhà hát Quân đội, 140 Cộng Hòa, P.4, Q.Tân Bình, TP.HCM"}
-            date={"20:00 - 19/11/2022"}
-            userName={"Nguyễn Văn A"}
-            email={"abc@gmail.com"}
-            amount={"3"}
-            createdDate={"20:00 - 01/11/2022"}
-            ticketType={{
-              type: "VIP",
-              description: "Vị trí trước sân khấu, bao gồm nước và poster",
-            }}
-            phone={"0909055734"}
-          />
-          <TicketItem
-            imgUrl={
-              "https://res.cloudinary.com/yelpcampcloudimg/image/upload/v1667231682/ngot-band/shows/313205932_735743951248315_6390225782124995825_n_nlsoo1.jpg"
-            }
-            title={"NHẠC NGỌT ĐỂ ĐỜI"}
-            location={"Nhà hát Quân đội, 140 Cộng Hòa, P.4, Q.Tân Bình, TP.HCM"}
-            date={"20:00 - 19/11/2022"}
-            userName={"Nguyễn Văn A"}
-            email={"abc@gmail.com"}
-            amount={"3"}
-            createdDate={"20:00 - 01/11/2022"}
-            ticketType={{
-              type: "VIP",
-              description: "Vị trí trước sân khấu, bao gồm nước và poster",
-            }}
-            phone={"0909055734"}
-          />
-          <TicketItem
-            imgUrl={
-              "https://res.cloudinary.com/yelpcampcloudimg/image/upload/v1667231682/ngot-band/shows/313205932_735743951248315_6390225782124995825_n_nlsoo1.jpg"
-            }
-            title={"NHẠC NGỌT ĐỂ ĐỜI"}
-            location={"Nhà hát Quân đội, 140 Cộng Hòa, P.4, Q.Tân Bình, TP.HCM"}
-            date={"20:00 - 19/11/2022"}
-            userName={"Nguyễn Văn A"}
-            email={"abc@gmail.com"}
-            amount={"3"}
-            createdDate={"20:00 - 01/11/2022"}
-            ticketType={{
-              type: "VIP",
-              description: "Vị trí trước sân khấu, bao gồm nước và poster",
-            }}
-            phone={"0909055734"}
-          />
-          <TicketItem
-            imgUrl={
-              "https://res.cloudinary.com/yelpcampcloudimg/image/upload/v1667231682/ngot-band/shows/313205932_735743951248315_6390225782124995825_n_nlsoo1.jpg"
-            }
-            title={"NHẠC NGỌT ĐỂ ĐỜI"}
-            location={"Nhà hát Quân đội, 140 Cộng Hòa, P.4, Q.Tân Bình, TP.HCM"}
-            date={"20:00 - 19/11/2022"}
-            userName={"Nguyễn Văn A"}
-            email={"abc@gmail.com"}
-            amount={"3"}
-            createdDate={"20:00 - 01/11/2022"}
-            ticketType={{
-              type: "VIP",
-              description: "Vị trí trước sân khấu, bao gồm nước và poster",
-            }}
-            phone={"0909055734"}
-          />
+          {userTickets.map((ticket) => (
+            <TicketItem
+              key={ticket._id}
+              imgUrl={ticket.show.poster}
+              title={ticket.show.title}
+              location={ticket.show.location}
+              date={ticket.show.date}
+              userName={loginInfo.fullName}
+              email={loginInfo.email}
+              phone={loginInfo.phone}
+              amount={ticket.amount}
+              createdDate={ticket.createdDate}
+              price={ticket.ticketType.price}
+              ticketType={{
+                type: ticket.ticketType.type,
+                description: ticket.ticketType.description,
+              }}
+            />
+          ))}
         </div>
+
         <div className="flex items-center justify-between pt-3 text-secondary">
           <div className="flex items-center gap-x-2">
             <img

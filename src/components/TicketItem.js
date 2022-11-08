@@ -11,6 +11,7 @@ const TicketItem = ({
   createdDate,
   email,
   phone,
+  price,
   ...Props
 }) => {
   return (
@@ -48,6 +49,13 @@ const TicketItem = ({
           <p>
             <span className="font-medium">Số lượng:</span>{" "}
             <span> {amount}</span>
+          </p>
+          <p>
+            <span className="font-medium">Tổng tiền:</span>{" "}
+            <span className="font-bold">
+              {" "}
+              {new Intl.NumberFormat("vi-VN").format(price * amount)}đ
+            </span>
           </p>
         </div>
       </div>

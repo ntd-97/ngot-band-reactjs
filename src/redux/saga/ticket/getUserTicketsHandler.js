@@ -3,22 +3,18 @@ import { call, put } from "redux-saga/effects";
 import requestTicket from "./ticketRequest";
 
 import {
-  setTicketAdded,
   setError,
   setTicketLoading,
-  getUserTickets,
+  setUserTickets,
 } from "../../slices/ticketSlice";
-import { setOpenTicketBooking } from "../../slices/ticketBookingSlice";
 
-function* handleAddTicket({ payload }) {
+function* handleGetUserTickets({ payload }) {
   const apiRequest = requestTicket();
   try {
     yield put(setTicketLoading(true));
-    const resAddTicket = yield call(apiRequest.addTicket, payload);
-    yield put(setTicketAdded(resAddTicket.data));
-    yield put(getUserTickets(payload.user));
+    const resUserTickets = yield call(apiRequest.userTickets, payload);
+    yield put(setUserTickets(resUserTickets.data));
     yield put(setTicketLoading(false));
-    yield put(setOpenTicketBooking(false));
   } catch (error) {
     console.log(error);
     yield put(setTicketLoading(false));
@@ -26,4 +22,4 @@ function* handleAddTicket({ payload }) {
   }
 }
 
-export default handleAddTicket;
+export default handleGetUserTickets;

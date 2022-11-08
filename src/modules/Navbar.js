@@ -18,6 +18,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const { loginInfo } = useSelector((state) => state.login);
+  const { userTickets } = useSelector((state) => state.ticket);
 
   return (
     <div className="Navbar fixed top-0 z-50 flex h-[73px] w-full items-center justify-between bg-primary pl-16 pr-20">
@@ -64,7 +65,7 @@ const Navbar = () => {
               }}
             />
             <span className="absolute -right-4 -top-3 rounded-full bg-contrast py-[2px] px-[7px] font-medium">
-              12
+              {userTickets.length}
             </span>
           </div>
         )}
