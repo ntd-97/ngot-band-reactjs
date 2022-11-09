@@ -52,7 +52,7 @@ const TicketSidebar = () => {
     >
       <div
         ref={ticketSidebar}
-        className={`no-scrollbar fixed right-0 top-0 z-[60] flex h-[100vh] flex-col overflow-scroll bg-primary px-3 pb-3 transition-all ease-linear lg:w-[30%] ${
+        className={`no-scrollbar fixed right-0 top-0 z-[60] flex h-[100vh] w-full flex-col overflow-scroll bg-primary px-3 pb-3 transition-all ease-linear lg:w-[30%] ${
           openTicketSideBar ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -67,25 +67,31 @@ const TicketSidebar = () => {
         </div>
 
         <div className="no-scrollbar flex flex-1 flex-col gap-y-3 overflow-scroll">
-          {userTickets.map((ticket) => (
-            <TicketItem
-              key={ticket._id}
-              imgUrl={ticket.show.poster}
-              title={ticket.show.title}
-              location={ticket.show.location}
-              date={ticket.show.date}
-              userName={loginInfo.fullName}
-              email={loginInfo.email}
-              phone={loginInfo.phone}
-              amount={ticket.amount}
-              createdDate={ticket.createdDate}
-              price={ticket.ticketType.price}
-              ticketType={{
-                type: ticket.ticketType.type,
-                description: ticket.ticketType.description,
-              }}
-            />
-          ))}
+          {userTickets.length > 0 ? (
+            userTickets.map((ticket) => (
+              <TicketItem
+                key={ticket._id}
+                imgUrl={ticket.show.poster}
+                title={ticket.show.title}
+                location={ticket.show.location}
+                date={ticket.show.date}
+                userName={loginInfo.fullName}
+                email={loginInfo.email}
+                phone={loginInfo.phone}
+                amount={ticket.amount}
+                createdDate={ticket.createdDate}
+                price={ticket.ticketType.price}
+                ticketType={{
+                  type: ticket.ticketType.type,
+                  description: ticket.ticketType.description,
+                }}
+              />
+            ))
+          ) : (
+            <h1 className="mx-auto my-auto text-xl text-contrast">
+              Không có vé
+            </h1>
+          )}
         </div>
 
         <div className="hidden items-center justify-between pt-3 text-secondary md:flex">
