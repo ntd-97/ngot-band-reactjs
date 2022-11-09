@@ -71,7 +71,7 @@ const TicketBooking = () => {
         <div className="no-scrollbar relative max-h-[90vh] w-[95%] overflow-scroll rounded-xl bg-secondary p-5 text-primary lg:w-[60%]">
           <RiCloseCircleLine
             onClick={closeTicketBooking}
-            className="absolute right-3 top-3 z-50 rounded-full bg-secondary p-1 text-3xl transition-all hover:scale-110 hover:cursor-pointer lg:bg-transparent lg:p-0"
+            className="absolute right-3 top-3 z-50 rounded-full bg-secondary p-1 text-4xl transition-all hover:scale-110 hover:cursor-pointer lg:bg-transparent lg:p-0 lg:text-3xl"
           />
           <div className="relative grid grid-cols-1 gap-x-3 gap-y-4 border-b-4 border-dashed pb-5 lg:grid-cols-3">
             <img

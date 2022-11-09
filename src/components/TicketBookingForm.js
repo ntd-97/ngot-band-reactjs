@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import { FaLessThanEqual } from "react-icons/fa";
+
 import { useDispatch, useSelector } from "react-redux";
 import { getSignUpInfo } from "../redux/slices/signUpSlice";
 import { getTicketAdded } from "../redux/slices/ticketSlice";
@@ -193,7 +195,9 @@ const TicketBookingForm = ({
           )}
           <div className="flex w-full flex-col">
             <label className="mb-1 font-medium" htmlFor="amount">
-              Số lượng vé (tối đa 3 vé):
+              Số lượng vé (
+              <FaLessThanEqual className="inline-block text-xs" />
+              3):
             </label>
             <input
               className="rounded-lg border-2 border-primary p-2"
