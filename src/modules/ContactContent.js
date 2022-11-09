@@ -20,7 +20,7 @@ const ContactContent = () => {
       bgColor={"bg-primary"}
       id={"contact"}
     >
-      <div className="mt-20 flex justify-between">
+      <div className="mt-20 flex flex-col justify-between gap-y-4 lg:flex-row">
         <div className="flex flex-col gap-y-4 text-xl">
           <p className="flex items-center">
             <FaMapMarkerAlt className="mr-1" />
@@ -35,8 +35,8 @@ const ContactContent = () => {
             Email: {email}
           </p>
         </div>
-        <div className="flex flex-col gap-y-2 text-lg text-primary">
-          <div className="flex gap-x-2">
+        <div className="flex flex-col gap-y-3 text-lg text-primary lg:gap-y-2">
+          <div className="flex flex-col gap-x-2 gap-y-3 lg:flex-row">
             <input
               type="email"
               placeholder="Email"
@@ -47,7 +47,7 @@ const ContactContent = () => {
           <input type="text" placeholder="Message" className="rounded-lg p-2" />
           <CustomButton
             className={
-              "rounded-lg border-2 border-secondary py-2 font-bold text-secondary hover:scale-95"
+              "mt-1 rounded-lg border-2 border-secondary py-2 font-bold text-secondary hover:scale-95"
             }
           >
             Gửi

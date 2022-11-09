@@ -105,7 +105,7 @@ const TicketBookingForm = ({
         onSubmit={handleSubmit(addTicketHandler)}
         className="mt-3 flex flex-col items-center justify-center gap-x-3 text-lg"
       >
-        <div className="grid w-full grid-cols-2 justify-between gap-y-4 gap-x-3">
+        <div className="grid w-full grid-cols-1 justify-between gap-y-4 gap-x-3 md:grid-cols-2">
           <div className="relative flex w-full flex-col">
             <label className="mb-1 font-medium" htmlFor="fullName">
               Họ và tên:

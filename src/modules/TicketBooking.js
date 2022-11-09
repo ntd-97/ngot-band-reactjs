@@ -65,25 +65,25 @@ const TicketBooking = () => {
       {loading ? (
         <Loader cssClass="h-12 w-12 border-4 mt-[150px]" loading={loading} />
       ) : (
-        <div className="no-scrollbar relative max-h-[90vh] w-[60%] overflow-scroll rounded-xl bg-secondary p-5 text-primary">
+        <div className="no-scrollbar relative max-h-[90vh] w-[95%] overflow-scroll rounded-xl bg-secondary p-5 text-primary lg:w-[60%]">
           <RiCloseCircleLine
             onClick={closeTicketBooking}
-            className="absolute right-3 top-3 z-50 text-3xl transition-all hover:scale-110 hover:cursor-pointer"
+            className="absolute right-3 top-3 z-50 rounded-full bg-secondary p-1 text-3xl transition-all hover:scale-110 hover:cursor-pointer lg:bg-transparent lg:p-0"
           />
-          <div className="relative flex gap-x-3 border-b-4 border-dashed pb-5">
+          <div className="relative grid grid-cols-1 gap-x-3 gap-y-4 border-b-4 border-dashed pb-5 lg:grid-cols-3">
             <img
               src={showDetails.poster}
               alt="show img"
-              className="w-1/3 rounded-lg object-cover"
+              className="h-full rounded-lg object-cover lg:col-span-1"
             />
-            <div className="flex flex-col justify-between gap-y-2 text-lg">
+            <div className="flex flex-col justify-between gap-y-2 text-lg lg:col-span-2">
               <div className="flex flex-col gap-y-2">
                 <h2 className="text-3xl font-bold">{showDetails.title}</h2>
                 <p className="font-medium">{showDetails.location}</p>
                 <p className="italic opacity-70">{showDetails.date}</p>
-                <p>{showDetails.description}</p>
+                <p className="text-justify">{showDetails.description}</p>
               </div>
-              <div className="grid grid-cols-3 gap-x-2">
+              <div className="grid grid-cols-1 gap-x-2 gap-y-2 md:grid-cols-3">
                 {showDetails.ticketTypes?.map((ticketType) => (
                   <TicketTypeItem
                     key={ticketType._id}

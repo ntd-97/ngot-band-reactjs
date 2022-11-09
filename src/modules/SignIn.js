@@ -93,7 +93,7 @@ const SignIn = () => {
       containerClassName="fixed z-[9999] inset-0 flex items-center justify-center"
     >
       <form
-        className="relative z-[51] w-[500px] rounded-xl bg-secondary py-5 px-7 text-lg"
+        className="relative z-[51] w-[95%] rounded-xl bg-secondary py-5 px-7 text-lg md:w-[500px]"
         onSubmit={handleSubmit(loginHandler)}
       >
         <RiCloseCircleLine

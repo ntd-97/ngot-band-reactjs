@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from "react";
+import { useEffect } from "react";
 
 import AlbumsContent from "./modules/AlbumsContent";
 import BandContent from "./modules/BandContent";
@@ -12,16 +12,13 @@ import TicketSidebar from "./modules/TicketSidebar";
 import SignIn from "./modules/SignIn";
 import Loader from "./components/Loader";
 import SignUp from "./modules/SignUp";
+import MenuSidebar from "./modules/MenuSidebar";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getCommonInfo } from "./redux/slices/commonInfoSlice";
 import { setLoginInfo } from "./redux/slices/loginSlice";
 
-export const TicketSidebarContext = createContext();
-
 function App() {
-  const [openTicketSidebar, setOpenTicketSidebar] = useState(false);
-
   const dispatch = useDispatch();
 
   const { error, loading } = useSelector((state) => state.commonInfo);
@@ -43,29 +40,20 @@ function App() {
 
   return (
     <div className="App relative">
-      <TicketSidebarContext.Provider
-        value={{ openTicketSidebar, setOpenTicketSidebar }}
-      >
-        <Navbar />
-      </TicketSidebarContext.Provider>
+      <Navbar />
 
       {loading ? (
         <Loader cssClass="h-12 w-12 border-4 mt-[150px]" loading={loading} />
       ) : (
         <>
+          <MenuSidebar />
           <BannerImage />
           <BandContent />
           <ShowsContent />
           <AlbumsContent />
           <ContactContent />
           <Footer />
-
-          <TicketSidebarContext.Provider
-            value={{ openTicketSidebar, setOpenTicketSidebar }}
-          >
-            <TicketSidebar />
-          </TicketSidebarContext.Provider>
-
+          <TicketSidebar />
           <TicketBooking />
           <SignIn />
           <SignUp />

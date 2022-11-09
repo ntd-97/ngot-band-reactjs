@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   userTickets: [],
   ticketAdded: {},
+  openTicketSideBar: false,
   loading: false,
   error: false,
 };
@@ -21,6 +22,10 @@ const ticketSlice = createSlice({
       ...state,
       ticketAdded: action.payload,
     }),
+    setOpenTicketSideBar: (state, action) => ({
+      ...state,
+      openTicketSideBar: action.payload,
+    }),
     setError: (state, action) => ({ ...state, error: action.payload }),
     setTicketLoading: (state, action) => ({
       ...state,
@@ -36,5 +41,6 @@ export const {
   setTicketLoading,
   getUserTickets,
   setUserTickets,
+  setOpenTicketSideBar,
 } = ticketSlice.actions;
 export default ticketSlice.reducer;

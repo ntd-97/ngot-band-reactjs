@@ -10,6 +10,7 @@ const initialState = {
   albums: [],
   loading: false,
   error: false,
+  openMenuSideBar: false,
 };
 
 const commonInfoSlice = createSlice({
@@ -28,10 +29,19 @@ const commonInfoSlice = createSlice({
       albums: action.payload.albums,
       shows: action.payload.shows,
     }),
+    setOpenMenuSideBar: (state, action) => ({
+      ...state,
+      openMenuSideBar: action.payload,
+    }),
     setError: (state, action) => ({ ...state, error: action.payload }),
     setLoading: (state, action) => ({ ...state, loading: action.payload }),
   },
 });
-export const { getCommonInfo, setCommonInfo, setError, setLoading } =
-  commonInfoSlice.actions;
+export const {
+  getCommonInfo,
+  setCommonInfo,
+  setError,
+  setLoading,
+  setOpenMenuSideBar,
+} = commonInfoSlice.actions;
 export default commonInfoSlice.reducer;

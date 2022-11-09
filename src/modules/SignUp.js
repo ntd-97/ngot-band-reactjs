@@ -108,7 +108,7 @@ const SignUp = () => {
     >
       <form
         onSubmit={handleSubmit(signUpHandler)}
-        className="relative z-[51] w-[600px] rounded-xl bg-secondary py-5 px-7 text-lg"
+        className="relative z-[51] w-[95%] rounded-xl bg-secondary py-5 px-7 text-lg md:w-[600px]"
       >
         <RiCloseCircleLine
           onClick={closeFormHandler}
@@ -117,7 +117,7 @@ const SignUp = () => {
 
         <h1 className="mb-5 text-center text-3xl font-medium">Đăng ký</h1>
 
-        <div className="grid w-full grid-cols-2 justify-between gap-y-6 gap-x-3">
+        <div className="grid w-full grid-cols-1 justify-between gap-y-6 gap-x-3 md:grid-cols-2">
           <div className="relative flex w-full flex-col">
             <label className="mb-1 font-medium" htmlFor="fullName">
               Họ và tên:

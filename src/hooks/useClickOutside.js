@@ -1,10 +1,12 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 const useClickOutside = (ref, func) => {
+  const dispatch = useDispatch();
   useEffect(() => {
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
-        func(false);
+        dispatch(func(false));
       }
     }
     // Bind the event listener
@@ -13,7 +15,7 @@ const useClickOutside = (ref, func) => {
       // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [func, ref]);
+  }, [func, ref, dispatch]);
 };
 
 export default useClickOutside;

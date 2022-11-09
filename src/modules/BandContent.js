@@ -15,10 +15,10 @@ const BandContent = () => {
       bgColor={"bg-secondary"}
       id={"band"}
     >
-      <p className="mb-[38px] text-justify indent-8 text-xl leading-8">
+      <p className="mb-[38px] text-justify indent-8 text-lg leading-8 md:text-xl">
         {description}
       </p>
-      <div className="grid gap-x-3 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-x-3 gap-y-3 lg:grid-cols-4">
         {members.map((member) => (
           <MemberItem
             key={member._id}
