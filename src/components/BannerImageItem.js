@@ -6,7 +6,6 @@ const BannerImageItem = ({ imgUrl }) => {
       <img
         src={imgUrl}
         alt="banner img"
-        loading="lazy"
         className="h-[93vh] w-full object-cover"
       />
       <div className="z-3 absolute  bottom-[8%] left-1/2 -translate-x-1/2 text-center text-secondary">

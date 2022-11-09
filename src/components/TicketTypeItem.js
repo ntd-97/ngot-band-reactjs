@@ -1,18 +1,17 @@
 import React from "react";
 
-const TicketTypeItem = ({ ticketTypeInfo, setTicketTypeChecked }) => {
+const TicketTypeItem = ({ ticketTypeInfo, setTicketTypeChecked, id }) => {
   return (
     <div className="flex flex-col rounded-lg border-2 border-primary p-2">
       <div className="flex items-center justify-between border-b-2 pb-2">
-        <h3 className="text-xl font-bold">
+        <label htmlFor={id} className="text-xl font-bold">
           {`${ticketTypeInfo.type} - ${ticketTypeInfo.amount}`}
-        </h3>
+        </label>
         <input
           type="radio"
-          id="ticketType"
+          id={id}
           name="ticketType"
           className="h-4 w-4 accent-contrast"
-          // value={ticketTypeInfo._id}
           onChange={(event) => {
             setTicketTypeChecked({
               id: ticketTypeInfo._id,

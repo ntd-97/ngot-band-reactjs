@@ -56,7 +56,7 @@ const MenuSidebar = () => {
           />
         </div>
 
-        <div className="flex flex-col items-center gap-y-5 text-lg font-medium text-secondary">
+        <div className="flex flex-col items-center gap-y-5 text-xl font-medium text-secondary">
           <a href="#band" className="navItem" onClick={closeMenuSidebarHandler}>
             Giới Thiệu
           </a>

@@ -15,7 +15,7 @@ const ShowsContent = () => {
       bgColor={"bg-primary"}
       id={"shows"}
     >
-      <div className="grid-row grid gap-x-3 gap-y-3 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid-row grid gap-x-3 gap-y-5 md:grid-cols-2 lg:grid-cols-4">
         {shows?.map((show) => (
           <ShowItem
             key={show._id}

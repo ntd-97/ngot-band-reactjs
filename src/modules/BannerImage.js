@@ -14,6 +14,7 @@ const BannerImage = () => {
         specifyClass="bannerImg"
         paginationClass="banner"
         autoPlay={true}
+        lazyLoad={false}
       >
         {bannerImgUrl.map((img) => (
           <SwiperSlide key={img}>

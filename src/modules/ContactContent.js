@@ -20,7 +20,7 @@ const ContactContent = () => {
       bgColor={"bg-primary"}
       id={"contact"}
     >
-      <div className="mt-20 flex flex-col justify-between gap-y-4 lg:flex-row">
+      <div className="flex flex-col justify-between gap-y-7 lg:mt-20 lg:flex-row">
         <div className="flex flex-col gap-y-4 text-xl">
           <p className="flex items-center">
             <FaMapMarkerAlt className="mr-1" />

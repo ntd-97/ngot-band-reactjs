@@ -65,8 +65,8 @@ const TicketBookingForm = ({
     if (isValid) {
       accountInfo = getValues();
 
-      if (!ticketTypeChecked.id) {
-        setTicketTypeError("Vui lòng chọn loại vé!");
+      if (!ticketTypeChecked.id || amount <= 0) {
+        setTicketTypeError("Vui lòng chọn loại vé, số lượng!");
       } else {
         // signup and add ticket
         if (!loginInfo._id) {
@@ -193,7 +193,7 @@ const TicketBookingForm = ({
           )}
           <div className="flex w-full flex-col">
             <label className="mb-1 font-medium" htmlFor="amount">
-              Số lượng vé:
+              Số lượng vé (tối đa 3 vé):
             </label>
             <input
               className="rounded-lg border-2 border-primary p-2"
@@ -203,9 +203,8 @@ const TicketBookingForm = ({
               placeholder="0"
               min={1}
               max={3}
-              onKeyDown={(event) => event.preventDefault()}
               onChange={amountChangeHandler}
-              defaultValue={amount}
+              value={amount}
             />
           </div>
           <div className="relative flex w-full flex-col">

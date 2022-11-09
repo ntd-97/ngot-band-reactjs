@@ -20,9 +20,12 @@ const TicketBooking = () => {
   });
 
   // amount state
-  const [amount, setAmmount] = useState(1);
+  const [amount, setAmount] = useState(1);
   const amountChangeHandler = (event) => {
-    setAmmount(event.target.value);
+    if (event.target.value <= 3 && event.target.value >= 0) {
+      setAmount(event.target.value);
+    }
+    event.preventDefault();
   };
 
   // get showId and openTicketBooking from store
@@ -49,7 +52,7 @@ const TicketBooking = () => {
     }
 
     dispatch(setErrorMsg(""));
-    setAmmount(1);
+    setAmount(1);
     setTicketTypeChecked({
       id: "",
       price: 0,
@@ -87,6 +90,7 @@ const TicketBooking = () => {
                 {showDetails.ticketTypes?.map((ticketType) => (
                   <TicketTypeItem
                     key={ticketType._id}
+                    id={ticketType._id}
                     ticketTypeInfo={ticketType}
                     setTicketTypeChecked={setTicketTypeChecked}
                   />
