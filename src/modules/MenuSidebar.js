@@ -48,7 +48,9 @@ const MenuSidebar = () => {
           openMenuSideBar ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className={`relative flex h-[73px] items-center text-secondary`}>
+        <div
+          className={`relative mb-10 flex h-[73px] items-center text-secondary`}
+        >
           <h1 className=" flex-1 text-center text-2xl font-medium">Menu</h1>
           <HiArrowNarrowLeft
             className="absolute right-0 top-1/2 -translate-y-1/2 text-3xl transition-all hover:cursor-pointer hover:text-contrast"
@@ -56,27 +58,31 @@ const MenuSidebar = () => {
           />
         </div>
 
-        <div className="flex flex-col items-center gap-y-5 text-xl font-medium text-secondary">
-          <a href="#band" className="navItem" onClick={closeMenuSidebarHandler}>
+        <div className="flex flex-col items-center gap-y-10 text-xl font-medium text-secondary">
+          <a
+            href="#band"
+            className="navItem w-full text-center"
+            onClick={closeMenuSidebarHandler}
+          >
             Giới Thiệu
           </a>
           <a
             href="#shows"
-            className="navItem"
+            className="navItem w-full text-center"
             onClick={closeMenuSidebarHandler}
           >
             Shows
           </a>
           <a
             href="#albums"
-            className="navItem"
+            className="navItem w-full text-center"
             onClick={closeMenuSidebarHandler}
           >
             Albums
           </a>
           <a
             href="#contact"
-            className="navItem"
+            className="navItem w-full text-center"
             onClick={closeMenuSidebarHandler}
           >
             Liên Hệ
