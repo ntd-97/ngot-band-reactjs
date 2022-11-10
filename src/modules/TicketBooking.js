@@ -22,7 +22,11 @@ const TicketBooking = () => {
   // amount state
   const [amount, setAmount] = useState(1);
   const amountChangeHandler = (event) => {
-    if (event.target.value <= 3 && event.target.value >= 0) {
+    if (
+      event.target.value <= 3 &&
+      event.target.value >= 0 &&
+      !isNaN(event.target.value)
+    ) {
       setAmount(parseInt(event.target.value));
     }
     event.preventDefault();
