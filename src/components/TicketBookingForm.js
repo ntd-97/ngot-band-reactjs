@@ -29,6 +29,7 @@ const validationSchema = yup.object({
     .required("Vui lòng nhập email!"),
   password: yup
     .string()
+    .min(8, "Password phải có ít nhất 8 ký tự!")
     .max(20, "Password không dài quá 20 ký tự!")
     .required("Vui lòng nhập password!"),
 });
