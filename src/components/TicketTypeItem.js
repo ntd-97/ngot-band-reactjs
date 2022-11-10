@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 const TicketTypeItem = ({ ticketTypeInfo, setTicketTypeChecked, id }) => {
   return (
     <div className="flex flex-col justify-between rounded-lg border-2 border-primary p-2">
@@ -28,6 +30,12 @@ const TicketTypeItem = ({ ticketTypeInfo, setTicketTypeChecked, id }) => {
       </p>
     </div>
   );
+};
+
+TicketTypeItem.propTypes = {
+  ticketTypeInfo: PropTypes.object,
+  setTicketTypeChecked: PropTypes.func,
+  id: PropTypes.string,
 };
 
 export default TicketTypeItem;

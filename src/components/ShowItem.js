@@ -2,6 +2,8 @@ import React from "react";
 
 import CustomButton from "./CustomButton";
 
+import PropTypes from "prop-types";
+
 import { useDispatch } from "react-redux";
 import {
   setOpenTicketBooking,
@@ -46,6 +48,16 @@ const ShowItem = ({
       </div>
     </div>
   );
+};
+
+ShowItem.propTypes = {
+  imgUrl: PropTypes.string,
+  title: PropTypes.string,
+  date: PropTypes.string,
+  location: PropTypes.string,
+  description: PropTypes.string,
+  amount: PropTypes.number,
+  showId: PropTypes.string,
 };
 
 export default ShowItem;

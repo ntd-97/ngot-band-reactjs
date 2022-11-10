@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import { FaLessThanEqual } from "react-icons/fa";
 
+import PropTypes from "prop-types";
+
 import { useDispatch, useSelector } from "react-redux";
 import { getSignUpInfo } from "../redux/slices/signUpSlice";
 import { getTicketAdded } from "../redux/slices/ticketSlice";
@@ -242,6 +244,13 @@ const TicketBookingForm = ({
       </form>
     </div>
   );
+};
+
+TicketBookingForm.propTypes = {
+  amount: PropTypes.number,
+  amountChangeHandler: PropTypes.func,
+  ticketTypeChecked: PropTypes.object,
+  showId: PropTypes.string,
 };
 
 export default TicketBookingForm;

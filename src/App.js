@@ -21,7 +21,7 @@ import { setLoginInfo } from "./redux/slices/loginSlice";
 function App() {
   const dispatch = useDispatch();
 
-  const { error, loading } = useSelector((state) => state.commonInfo);
+  const { loading } = useSelector((state) => state.commonInfo);
 
   useEffect(() => {
     // get common info
@@ -36,7 +36,7 @@ function App() {
     dispatch(
       setLoginInfo({ _id: id, fullName: fullName, phone: phone, email: email })
     );
-  }, [dispatch, error]);
+  }, [dispatch]);
 
   return (
     <div className="App relative w-full">

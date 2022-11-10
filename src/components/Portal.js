@@ -42,9 +42,7 @@ const Portal = ({
 
 Portal.propTypes = {
   containerClassName: PropTypes.string,
-  bodyClassName: PropTypes.string,
   containerStyle: PropTypes.object,
-  bodyStyle: PropTypes.object,
   onClose: PropTypes.func,
   children: PropTypes.node,
   overlay: PropTypes.bool,

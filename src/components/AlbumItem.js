@@ -1,16 +1,12 @@
 import React from "react";
+
 import { FaHeadphonesAlt } from "react-icons/fa";
 
 import CustomButton from "./CustomButton";
 
-const AlbumItem = ({
-  imgUrl,
-  title,
-  date,
-  description,
-  albumLink,
-  ...props
-}) => {
+import PropTypes from "prop-types";
+
+const AlbumItem = ({ imgUrl, title, date, description, albumLink }) => {
   return (
     <div className="flex flex-col rounded-lg text-lg shadow-2xl transition-all hover:scale-105 hover:cursor-pointer md:flex-row">
       <img
@@ -39,6 +35,14 @@ const AlbumItem = ({
       </div>
     </div>
   );
+};
+
+AlbumItem.propTypes = {
+  imgUrl: PropTypes.string,
+  title: PropTypes.string,
+  date: PropTypes.string,
+  description: PropTypes.string,
+  albumLink: PropTypes.string,
 };
 
 export default AlbumItem;

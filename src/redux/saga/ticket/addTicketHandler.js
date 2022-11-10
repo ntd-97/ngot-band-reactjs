@@ -13,11 +13,18 @@ import { setOpenTicketBooking } from "../../slices/ticketBookingSlice";
 function* handleAddTicket({ payload }) {
   const apiRequest = requestTicket();
   try {
+    // show loading
     yield put(setTicketLoading(true));
+
+    // add ticket
     const resAddTicket = yield call(apiRequest.addTicket, payload);
     yield put(setTicketAdded(resAddTicket.data));
     yield put(getUserTickets(payload.user));
+
+    // hide loading
     yield put(setTicketLoading(false));
+
+    // close form
     yield put(setOpenTicketBooking(false));
   } catch (error) {
     console.log(error);

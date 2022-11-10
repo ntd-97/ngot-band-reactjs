@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 const MemberItem = ({ imgUrl, name }) => {
   return (
     <div>
@@ -7,6 +9,11 @@ const MemberItem = ({ imgUrl, name }) => {
       <p className="text-center text-lg font-medium md:text-xl">{name}</p>
     </div>
   );
+};
+
+MemberItem.propTypes = {
+  imgUrl: PropTypes.string,
+  name: PropTypes.string,
 };
 
 export default MemberItem;

@@ -10,7 +10,6 @@ import useClickOutside from "../hooks/useClickOutside";
 import avatar from "../assets/images/avatar.jpg";
 
 import { useDispatch, useSelector } from "react-redux";
-
 import { setLoginInfo } from "../redux/slices/loginSlice";
 import {
   getUserTickets,
@@ -19,8 +18,8 @@ import {
 } from "../redux/slices/ticketSlice";
 
 const TicketSidebar = () => {
+  // click outside handler
   const ticketSidebar = useRef();
-
   useClickOutside(ticketSidebar, setOpenTicketSideBar);
 
   const { loginInfo } = useSelector((state) => state.login);
@@ -29,6 +28,7 @@ const TicketSidebar = () => {
   );
   const dispatch = useDispatch();
 
+  // logout handler
   const logOutHandler = () => {
     dispatch(setLoginInfo({}));
     dispatch(setUserTickets([]));
@@ -36,6 +36,7 @@ const TicketSidebar = () => {
     localStorage.clear();
   };
 
+  // get user's ticket
   useEffect(() => {
     if (loginInfo._id) {
       dispatch(getUserTickets(loginInfo._id));

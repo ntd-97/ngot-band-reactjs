@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 const BannerImageItem = ({ imgUrl }) => {
   return (
     <div className="BannerItem relative mt-[73px]">
@@ -16,6 +18,10 @@ const BannerImageItem = ({ imgUrl }) => {
       </div>
     </div>
   );
+};
+
+BannerImageItem.propTypes = {
+  imgUrl: PropTypes.string,
 };
 
 export default BannerImageItem;

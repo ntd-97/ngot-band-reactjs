@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { BsCheckLg } from "react-icons/bs";
 import { RiCloseCircleLine, RiLoginBoxLine } from "react-icons/ri";
@@ -16,7 +16,6 @@ import {
   getLoginInfo,
   setErrorMsg,
 } from "../redux/slices/loginSlice";
-import { useEffect } from "react";
 
 // form validation schema
 const validationSchema = yup.object({
@@ -62,8 +61,10 @@ const SignIn = () => {
     if (!loading) {
       // reset error message
       dispatch(setErrorMsg(""));
+
       // reset checkbox show password
       setShowPassword(false);
+
       // reset form
       reset({
         email: "",
@@ -78,6 +79,7 @@ const SignIn = () => {
     if (loginInfo._id) {
       // reset checkbox show password
       setShowPassword(false);
+
       // reset form
       reset({
         email: "",

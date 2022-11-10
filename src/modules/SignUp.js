@@ -17,8 +17,6 @@ import {
   setOpenSignUpForm,
 } from "../redux/slices/signUpSlice";
 
-// import { useEffect } from "react";
-
 // form validation schema
 const validationSchema = yup.object({
   fullName: yup.string().required("Vui lòng nhập tên!"),

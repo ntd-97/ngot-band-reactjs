@@ -20,13 +20,16 @@ const MenuSidebar = () => {
   const { openMenuSideBar } = useSelector((state) => state.commonInfo);
   const dispatch = useDispatch();
 
+  // click outside handler
   const menuSidebar = useRef();
   useClickOutside(menuSidebar, setOpenMenuSideBar);
 
+  // close menu sidebar handler
   const closeMenuSidebarHandler = () => {
     dispatch(setOpenMenuSideBar(false));
   };
 
+  // logout hnadler
   const logOutHandler = () => {
     dispatch(setLoginInfo({}));
     dispatch(setUserTickets([]));

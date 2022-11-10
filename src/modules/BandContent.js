@@ -7,6 +7,7 @@ import MemberItem from "../components/MemberItem";
 
 const BandContent = () => {
   const { members, description } = useSelector((state) => state.commonInfo);
+
   return (
     <ContentWraper
       title={"Ban nhạc Ngọt"}

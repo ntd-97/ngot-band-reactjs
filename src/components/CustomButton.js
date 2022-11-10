@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 const CustomButton = ({
   className,
   children,
@@ -17,6 +19,13 @@ const CustomButton = ({
       {children}
     </button>
   );
+};
+
+CustomButton.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+  onClickHandler: PropTypes.func,
+  type: PropTypes.string,
 };
 
 export default CustomButton;

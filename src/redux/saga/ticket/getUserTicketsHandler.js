@@ -11,9 +11,14 @@ import {
 function* handleGetUserTickets({ payload }) {
   const apiRequest = requestTicket();
   try {
+    // show loading
     yield put(setTicketLoading(true));
+
+    // get user's tickets
     const resUserTickets = yield call(apiRequest.userTickets, payload);
     yield put(setUserTickets(resUserTickets.data));
+
+    // hide loading
     yield put(setTicketLoading(false));
   } catch (error) {
     console.log(error);

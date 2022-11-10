@@ -17,6 +17,7 @@ function* handleSignUpAccount({ payload }) {
     yield put(setLoading(true));
     // set loading of login slice
     yield put(setLoginLoading(true));
+
     // set loading of ticket slice
     if (payload.signUpAndAddTicket) {
       yield put(setTicketLoading(true));

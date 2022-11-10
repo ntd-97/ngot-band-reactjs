@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 const useClickOutside = (ref, func) => {
+  // call action redux
   const dispatch = useDispatch();
   useEffect(() => {
     function handleClickOutside(event) {

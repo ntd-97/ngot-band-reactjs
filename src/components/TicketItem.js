@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 const TicketItem = ({
   imgUrl,
   title,
@@ -12,7 +14,6 @@ const TicketItem = ({
   email,
   phone,
   price,
-  ...Props
 }) => {
   return (
     <div className="rounded-xl bg-secondary p-3">
@@ -65,6 +66,20 @@ const TicketItem = ({
       </div>
     </div>
   );
+};
+
+TicketItem.propTypes = {
+  imgUrl: PropTypes.string,
+  title: PropTypes.string,
+  location: PropTypes.string,
+  date: PropTypes.string,
+  ticketType: PropTypes.object,
+  amount: PropTypes.number,
+  userName: PropTypes.string,
+  createdDate: PropTypes.string,
+  email: PropTypes.string,
+  phone: PropTypes.string,
+  price: PropTypes.number,
 };
 
 export default TicketItem;

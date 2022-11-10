@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 const ContentWraper = ({
   title,
   subTitle,
@@ -7,7 +9,6 @@ const ContentWraper = ({
   children,
   bgColor,
   id,
-  ...props
 }) => {
   return (
     <div className={`w-full ${bgColor}`} id={id}>
@@ -24,6 +25,15 @@ const ContentWraper = ({
       </div>
     </div>
   );
+};
+
+ContentWraper.propTypes = {
+  title: PropTypes.string,
+  subTitle: PropTypes.string,
+  titleColor: PropTypes.string,
+  children: PropTypes.node,
+  bgColor: PropTypes.string,
+  id: PropTypes.string,
 };
 
 export default ContentWraper;
