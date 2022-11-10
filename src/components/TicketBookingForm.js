@@ -223,9 +223,11 @@ const TicketBookingForm = ({
             )}
             <p className="mb-1 font-medium">Tổng tiền:</p>
             <p className="rounded-lg border-2 border-contrast p-2 text-right font-bold">
-              {new Intl.NumberFormat("vi-VN").format(
-                ticketTypeChecked.price * amount
-              )}
+              {amount > 0
+                ? new Intl.NumberFormat("vi-VN").format(
+                    ticketTypeChecked.price * amount
+                  )
+                : 0}
               đ
             </p>
           </div>
