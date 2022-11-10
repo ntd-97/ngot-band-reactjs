@@ -24,14 +24,14 @@ const validationSchema = yup.object({
     .matches(new RegExp("[0-9]{10}"), "Số điện thoại không hợp lệ!"),
   email: yup
     .string()
+    .required("Vui lòng nhập email!")
     .max(255, "Email không dài quá 255 ký tự")
-    .email("Vui lòng nhập email hợp lệ!")
-    .required("Vui lòng nhập email!"),
+    .email("Vui lòng nhập email hợp lệ!"),
   password: yup
     .string()
+    .required("Vui lòng nhập password!")
     .min(8, "Password phải có ít nhất 8 ký tự!")
-    .max(20, "Password không dài quá 20 ký tự!")
-    .required("Vui lòng nhập password!"),
+    .max(20, "Password không dài quá 20 ký tự!"),
 });
 
 const TicketBookingForm = ({
