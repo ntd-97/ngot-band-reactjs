@@ -68,7 +68,7 @@ const TicketBooking = () => {
       {loading ? (
         <Loader cssClass="h-12 w-12 border-4 mt-[150px]" loading={loading} />
       ) : (
-        <div className="no-scrollbar relative max-h-[90vh] w-[95%] overflow-scroll rounded-xl bg-secondary p-5 text-primary lg:w-[60%]">
+        <div className="no-scrollbar relative max-h-[90vh] w-[95%] overflow-scroll rounded-xl bg-secondary p-5 text-primary xl:w-[80%] 2xl:w-[65%]">
           <RiCloseCircleLine
             onClick={closeTicketBooking}
             className="absolute right-3 top-3 z-50 rounded-full bg-secondary p-1 text-4xl transition-all hover:scale-110 hover:cursor-pointer lg:bg-transparent lg:p-0 lg:text-3xl"

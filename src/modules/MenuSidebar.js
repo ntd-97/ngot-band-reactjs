@@ -125,7 +125,7 @@ const MenuSidebar = () => {
                 <p className="text-lg">{loginInfo?.fullName}</p>
               </div>
               <CustomButton
-                className={"rounded-lg bg-contrast px-2 py-1 text-lg"}
+                className={"rounded-lg bg-contrast px-3 py-1 text-lg"}
                 onClickHandler={logOutHandler}
               >
                 Đăng xuất

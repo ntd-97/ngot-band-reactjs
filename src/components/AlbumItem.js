@@ -12,11 +12,11 @@ const AlbumItem = ({
   ...props
 }) => {
   return (
-    <div className="flex flex-col rounded-lg text-lg shadow-2xl transition-all hover:scale-105 hover:cursor-pointer lg:flex-row">
+    <div className="flex flex-col rounded-lg text-lg shadow-2xl transition-all hover:scale-105 hover:cursor-pointer md:flex-row">
       <img
         src={imgUrl}
         alt="album img"
-        className="h-full rounded-t-lg object-cover md:w-[280px] lg:rounded-l-lg"
+        className="rounded-t-lg object-cover md:w-[45%] md:rounded-l-lg md:rounded-tr-none lg:w-[280px]"
       />
       <div className="flex flex-col justify-between gap-y-2 p-[30px]">
         <h1 className="text-[27px] font-bold">{title}</h1>

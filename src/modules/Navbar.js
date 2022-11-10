@@ -21,7 +21,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="Navbar fixed top-0 z-50 flex h-[73px] w-full items-center justify-between bg-primary px-5 lg:pl-16 lg:pr-20">
+    <div className="Navbar fixed top-0 z-50 flex h-[73px] w-full items-center justify-between bg-primary px-5 xl:pl-16 xl:pr-20">
       <HiMenu
         className="cursor-pointer text-3xl text-secondary transition-all md:hidden lg:hover:scale-110"
         onClick={() => {

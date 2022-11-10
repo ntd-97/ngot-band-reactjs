@@ -18,6 +18,7 @@ const validationSchema = yup.object({
   phone: yup
     .string()
     .required("Vui lòng nhập số điện thoại!")
+    .max(10, "Số điện thoại không hợp lệ!")
     .matches(new RegExp("[0-9]{10}"), "Số điện thoại không hợp lệ!"),
   email: yup
     .string()

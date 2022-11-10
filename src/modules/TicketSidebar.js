@@ -52,7 +52,7 @@ const TicketSidebar = () => {
     >
       <div
         ref={ticketSidebar}
-        className={`no-scrollbar fixed right-0 top-0 z-[60] flex h-[100vh] w-full flex-col overflow-scroll bg-primary px-3 pb-3 transition-all ease-linear lg:w-[30%] ${
+        className={`no-scrollbar fixed right-0 top-0 z-[60] flex h-[100vh] w-full flex-col overflow-scroll bg-primary px-3 pb-4 transition-all ease-linear lg:w-1/2 2xl:w-[30%] ${
           openTicketSideBar ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -94,7 +94,7 @@ const TicketSidebar = () => {
           )}
         </div>
 
-        <div className="hidden items-center justify-between pt-3 text-secondary md:flex">
+        <div className="hidden items-center justify-between pt-4 text-secondary md:flex">
           <div className="flex items-center gap-x-2">
             <img
               src={avatar}
@@ -104,7 +104,7 @@ const TicketSidebar = () => {
             <p className="text-lg">{loginInfo?.fullName}</p>
           </div>
           <CustomButton
-            className={"rounded-lg bg-contrast px-2 py-1 text-lg"}
+            className={"rounded-lg bg-contrast px-3 py-1 text-lg"}
             onClickHandler={logOutHandler}
           >
             Đăng xuất

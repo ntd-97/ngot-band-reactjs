@@ -39,7 +39,7 @@ function App() {
   }, [dispatch, error]);
 
   return (
-    <div className="App relative">
+    <div className="App relative w-full">
       <Navbar />
 
       {loading ? (

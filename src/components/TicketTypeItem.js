@@ -2,7 +2,7 @@ import React from "react";
 
 const TicketTypeItem = ({ ticketTypeInfo, setTicketTypeChecked, id }) => {
   return (
-    <div className="flex flex-col rounded-lg border-2 border-primary p-2">
+    <div className="flex flex-col justify-between rounded-lg border-2 border-primary p-2">
       <div className="flex items-center justify-between border-b-2 pb-2">
         <label htmlFor={id} className="text-xl font-bold">
           {`${ticketTypeInfo.type} - ${ticketTypeInfo.amount}`}
