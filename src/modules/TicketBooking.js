@@ -23,7 +23,7 @@ const TicketBooking = () => {
   const [amount, setAmount] = useState(1);
   const amountChangeHandler = (event) => {
     if (event.target.value <= 3 && event.target.value >= 0) {
-      setAmount(event.target.value);
+      setAmount(parseInt(event.target.value));
     }
     event.preventDefault();
   };
