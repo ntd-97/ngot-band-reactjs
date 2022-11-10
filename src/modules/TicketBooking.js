@@ -20,15 +20,12 @@ const TicketBooking = () => {
   });
 
   // amount state
-  const [amount, setAmount] = useState(1);
+  const [amount, setAmount] = useState("1");
   const amountChangeHandler = (event) => {
-    if (
-      event.target.value <= 3 &&
-      event.target.value >= 0 &&
-      !isNaN(event.target.value)
-    ) {
-      setAmount(parseInt(event.target.value));
+    if (event.target.value <= 3 && event.target.value >= 0) {
+      setAmount(String(event.target.value));
     }
+
     event.preventDefault();
   };
 
@@ -56,7 +53,7 @@ const TicketBooking = () => {
     }
 
     dispatch(setErrorMsg(""));
-    setAmount(1);
+    setAmount("1");
     setTicketTypeChecked({
       id: "",
       price: 0,

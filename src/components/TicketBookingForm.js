@@ -250,7 +250,7 @@ const TicketBookingForm = ({
 };
 
 TicketBookingForm.propTypes = {
-  amount: PropTypes.number,
+  amount: PropTypes.string,
   amountChangeHandler: PropTypes.func,
   ticketTypeChecked: PropTypes.object,
   showId: PropTypes.string,
